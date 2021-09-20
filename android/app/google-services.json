@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "1081896986894",
+    "project_id": "firechat-38e7e",
+    "storage_bucket": "firechat-38e7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081896986894:android:0a869f00976f6577030f5f",
+        "android_client_info": {
+          "package_name": "com.example.firechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081896986894-nhkaq28d5vrfbu2o1auvd1qo2rrnp0h2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firechat",
+            "certificate_hash": "e7c96bed60955195c5b7547c29ebd57b537ef60f"
+          }
+        },
+        {
+          "client_id": "1081896986894-mrouhl6pb5kq29u5ui4hetk9n3fntd1v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC--xEQW70UucS07sP6P_6hG78I6l0zZM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081896986894-mrouhl6pb5kq29u5ui4hetk9n3fntd1v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1081896986894-33jl68snib8u7phm3b00crenkh9ar1c8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebaseFlutterChat"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081896986894:android:ebc24bad2fde0782030f5f",
+        "android_client_info": {
+          "package_name": "com.firechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081896986894-pkjsi4pjtbt9rrbdpki3utc232ud309i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.firechat",
+            "certificate_hash": "e7c96bed60955195c5b7547c29ebd57b537ef60f"
+          }
+        },
+        {
+          "client_id": "1081896986894-mrouhl6pb5kq29u5ui4hetk9n3fntd1v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC--xEQW70UucS07sP6P_6hG78I6l0zZM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081896986894-mrouhl6pb5kq29u5ui4hetk9n3fntd1v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1081896986894-33jl68snib8u7phm3b00crenkh9ar1c8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebaseFlutterChat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
