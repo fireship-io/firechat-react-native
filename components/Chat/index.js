@@ -17,7 +17,7 @@ const Received = ({chat}) => {
   const styles = StyleSheet.create({
     text: {
       fontWeight: '500',
-      letterSpacing: 0.5,
+      letterSpacing: 0,
       fontSize: 18,
       color: '#131313',
       padding: 0,
@@ -72,8 +72,8 @@ const Received = ({chat}) => {
 const Sent = ({chat}) => {
   const styles = StyleSheet.create({
     text: {
-      fontWeight: '500',
-      letterSpacing: 0.5,
+      fontWeight: '600',
+      letterSpacing: 0,
       fontSize: 18,
       color: '#131313',
       padding: 0,
@@ -84,7 +84,7 @@ const Sent = ({chat}) => {
       width: 45,
       height: 45,
       marginRight: 0,
-      marginLeft: 5,
+      marginLeft: 4,
       borderRadius: 50,
       alignItems: 'center',
       justifyContent: 'center',
