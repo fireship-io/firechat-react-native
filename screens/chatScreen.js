@@ -52,7 +52,7 @@ const ChatScreen = () => {
       }
     } else {
       setLoading(false);
-      Alert.alert('Chat must be between 1 and 40 characters');
+      Alert.alert('Chat not sent', 'Must be between 1 and 40 characters');
     }
   };
 
@@ -69,7 +69,7 @@ const ChatScreen = () => {
           const id = doc.id;
           const data = doc.data();
 
-          chatsArr.push({id, data});
+          chatsArr.push({id, ...data});
         });
         setChats(chatsArr);
         setLoading(false);
@@ -93,7 +93,7 @@ const ChatScreen = () => {
           <SignOutButton handleClick={handleSignOut} />
         </View>
 
-        <View style={styles.rowStyle}>
+        <View style={styles.chatStyle}>
           {chats && (
             <FlatList
               data={chats}
@@ -112,7 +112,7 @@ const ChatScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  rowStyle: {
+  chatStyle: {
     alignItems: 'center',
     justifyContent: 'center',
     height: '90%',
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     padding: 0,
     marginLeft: 'auto',
     marginRight: 'auto',
-    overflowY: 'scroll',
+    // overflowY: 'scroll',
   },
   container: {
     height: '100%',
