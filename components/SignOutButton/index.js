@@ -11,8 +11,8 @@ const SignOutButton = ({handleClick}) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontWeight: '500',
     fontSize: 14,
+    fontWeight: '600',
     color: '#030303',
   },
 });

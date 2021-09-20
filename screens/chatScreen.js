@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Input from '../components/Input';
 import {
   View,
   StyleSheet,
@@ -8,19 +7,23 @@ import {
   ActivityIndicator,
   FlatList,
 } from 'react-native';
+import Chat from '../components/Chat';
+import Input from '../components/Input';
+import auth from '@react-native-firebase/auth';
 import SendButton from '../components/SendButton';
 import SignOutButton from '../components/SignOutButton';
-import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import Chat from '../components/Chat';
 
 const ChatScreen = () => {
-  const [loading, setLoading] = useState(true);
-  const [chats, setChats] = useState([]);
   const [text, setText] = useState('');
+  const [chats, setChats] = useState([]);
+  const [loading, setLoading] = useState(true);
   const timestamp = firestore.FieldValue.serverTimestamp();
 
   const sendMessage = async e => {
+    const {uid, photoURL} = auth().currentUser;
+
+    // Dont allow empty/large messages
     if (text.length > 1 && text.length < 40) {
       try {
         e.preventDefault();
@@ -30,51 +33,28 @@ const ChatScreen = () => {
           .collection('chats')
           .doc()
           .set({
-            owner: auth().currentUser.uid,
-            imageUrl: auth().currentUser.photoURL,
+            owner: uid,
+            imageUrl: photoURL,
             text: text,
             createdAt: timestamp,
+          })
+          .then(() => {
+            setText('');
+            setLoading(false);
           })
           .catch(err => {
             setLoading(false);
             Alert.alert('Error', err);
-          })
-          .finally(() => {
-            setText('');
-            setLoading(false);
           });
       } catch (err) {
-        Alert.alert('Error', err);
         setLoading(false);
+        Alert.alert('Error', err);
       }
     } else {
       setLoading(false);
-      Alert.alert('Chat must be between 1 and 40 characters!');
+      Alert.alert('Chat must be between 1 and 40 characters');
     }
   };
-
-  // const sendEmoji = async e => {
-  //   e.preventDefault();
-  //   setLoading(true);
-
-  //   await firestore()
-  //     .collection('chats')
-  //     .doc()
-  //     .set({
-  //       owner: auth().currentUser.uid,
-  //       imageUrl: auth().currentUser.photoURL,
-  //       text: '🔥',
-  //       createdAt: timestamp,
-  //     })
-  //     .catch(err => {
-  //       setLoading(false);
-  //       Alert.alert('Error', err);
-  //     })
-  //     .finally(() => {
-  //       setText('');
-  //       setLoading(false);
-  //     });
-  // };
 
   const handleSignOut = async () => await auth().signOut();
 
@@ -86,13 +66,15 @@ const ChatScreen = () => {
       .onSnapshot(querySnapshot => {
         const chatsArr = [];
         querySnapshot.forEach(doc => {
-          chatsArr.push({id: doc.id, ...doc.data()});
+          const id = doc.id;
+          const data = doc.data();
+
+          chatsArr.push({id, data});
         });
         setChats(chatsArr);
         setLoading(false);
       });
 
-    // Unsubscribe from events when no longer in use
     return () => {
       unsubscribe();
       setLoading(false);
@@ -102,24 +84,16 @@ const ChatScreen = () => {
   if (loading) {
     return <ActivityIndicator />;
   } else {
+    const username = auth().currentUser.displayName;
+
     return (
       <View style={styles.container}>
         <View style={styles.textContainer}>
-          <Text style={styles.text}>{auth().currentUser.displayName}</Text>
+          <Text style={styles.text}>{username}</Text>
           <SignOutButton handleClick={handleSignOut} />
         </View>
 
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '90%',
-            margin: 0,
-            padding: 0,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            overflowY: 'scroll',
-          }}>
+        <View style={styles.rowStyle}>
           {chats && (
             <FlatList
               data={chats}
@@ -127,6 +101,7 @@ const ChatScreen = () => {
             />
           )}
         </View>
+
         <View style={styles.inputContainer}>
           <Input text={text} setText={setText} />
           <SendButton handleChat={sendMessage} />
@@ -137,6 +112,16 @@ const ChatScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  rowStyle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '90%',
+    margin: 0,
+    padding: 0,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    overflowY: 'scroll',
+  },
   container: {
     height: '100%',
     width: '100%',
@@ -153,7 +138,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: '100%',
     height: 60,
-    elevation: 6,
+    // elevation: 6,
     position: 'absolute',
     flexDirection: 'row',
     bottom: 0,

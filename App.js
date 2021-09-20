@@ -1,44 +1,41 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, StatusBar, View} from 'react-native';
-import auth from '@react-native-firebase/auth';
+import {SafeAreaView, StatusBar, View, StyleSheet} from 'react-native';
 import ChatScreen from './screens/chatScreen';
+import auth from '@react-native-firebase/auth';
 import LoginScreen from './screens/loginScreen';
-// import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const App = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    // Auth listener
     const unsubscribe = auth().onAuthStateChanged(user => {
-      if (user) {
-        setUser(user);
-      } else if (!user) {
-        setUser(null);
-      }
+      user ? setUser(user) : setUser(null);
     });
     return () => {
       unsubscribe();
-    }; // unsubscribe on unmount
+    };
   }, []);
 
-  const backgroundStyle = {
-    backgroundColor: '#151718',
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={'light-content'} />
-      <View
-        style={{
-          height: '100%',
-          alignItems: 'center',
-          backgroundColor: '#151718',
-        }}>
-        {user && <ChatScreen />}
-        {!user && <LoginScreen />}
+    <SafeAreaView style={styles.backgroundStyle}>
+      <StatusBar barStyle={'dark-content'} />
+      <View style={styles.viewStyle}>
+        {user ? <ChatScreen /> : <LoginScreen />}
       </View>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  backgroundStyle: {
+    backgroundColor: '#151718',
+  },
+  viewStyle: {
+    height: '100%',
+    alignItems: 'center',
+    backgroundColor: '#151718',
+  },
+});
 
 export default App;

@@ -15,22 +15,19 @@ const Input = ({text, setText}) => {
 
 const styles = StyleSheet.create({
   textInput: {
-    height: 40,
     width: '75%',
-    padding: 12,
+    height: 40,
     margin: 0,
-    paddingBottom: 0,
+    padding: 12,
     paddingTop: 0,
-    marginLeft: 0,
-    marginRight: 0,
-    elevation: 0,
-    backgroundColor: '#282a2d',
+    paddingBottom: 0,
+    fontSize: 17,
+    letterSpacing: 0,
     color: '#ffa600',
-    fontWeight: '500',
-    letterSpacing: 0.25,
-    fontSize: 18,
+    fontWeight: '600',
     borderRadius: 500,
     alignItems: 'center',
+    backgroundColor: '#282a2d',
   },
 });
 
