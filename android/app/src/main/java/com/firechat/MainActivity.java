@@ -1,4 +1,4 @@
-package com.firechat;
+package io.fireship.firechat;
 
 import com.facebook.react.ReactActivity;
 

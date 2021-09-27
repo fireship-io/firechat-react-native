@@ -9,17 +9,18 @@ import {
 const LoginScreen = () => {
   // Initialize google sign in
   GoogleSignin.configure({
-    webClientId:
-      // Pulled from the firebase console
-      '1081896986894-mrouhl6pb5kq29u5ui4hetk9n3fntd1v.apps.googleusercontent.com',
+    webClientId: '1081896986894-mrouhl6pb5kq29u5ui4hetk9n3fntd1v.apps.googleusercontent.com',
   });
 
   const handleLogin = async () => {
-    const {idToken} = await GoogleSignin.signIn();
+    try {
+      const {idToken} = await GoogleSignin.signIn();
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-    return auth().signInWithCredential(googleCredential);
+      return auth().signInWithCredential(googleCredential);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

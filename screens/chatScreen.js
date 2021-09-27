@@ -138,7 +138,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: '100%',
     height: 60,
-    // elevation: 6,
     position: 'absolute',
     flexDirection: 'row',
     bottom: 0,

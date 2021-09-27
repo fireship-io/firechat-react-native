@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1081896986894-5fld78f8f9j1p1o5rgtcqcjte8vtc0ga.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firechat",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "1081896986894-nhkaq28d5vrfbu2o1auvd1qo2rrnp0h2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -58,11 +66,63 @@
       },
       "oauth_client": [
         {
+          "client_id": "1081896986894-k35vuo2strnmb2q7q7lkrpr1n27abv7p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.firechat",
+            "certificate_hash": "1e85c67fd3bc6c05d1881b3ca37bfe20a13e9a68"
+          }
+        },
+        {
           "client_id": "1081896986894-pkjsi4pjtbt9rrbdpki3utc232ud309i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.firechat",
             "certificate_hash": "e7c96bed60955195c5b7547c29ebd57b537ef60f"
+          }
+        },
+        {
+          "client_id": "1081896986894-mrouhl6pb5kq29u5ui4hetk9n3fntd1v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC--xEQW70UucS07sP6P_6hG78I6l0zZM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081896986894-mrouhl6pb5kq29u5ui4hetk9n3fntd1v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1081896986894-33jl68snib8u7phm3b00crenkh9ar1c8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebaseFlutterChat"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081896986894:android:f63773a1761783c2030f5f",
+        "android_client_info": {
+          "package_name": "io.fireship.firechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081896986894-r153mvtm4f2mtut4gfqcg3mh16ejidsl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.fireship.firechat",
+            "certificate_hash": "1e85c67fd3bc6c05d1881b3ca37bfe20a13e9a68"
           }
         },
         {

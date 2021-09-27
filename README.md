@@ -13,6 +13,9 @@
 3. Check that your device is properly connecting to ADB
 
 ```zsh
+$ emulator -list-avds
+
+
 $ adb devices
 # List of devices attached
 # emulator-5554 offline   # Google emulator
@@ -60,3 +63,7 @@ firechat-react-native
     └── SignOutButton
         └── index.js
 ```
+
+# Generating SHA
+
+To retrieve correct SHA1 run `keytool -exportcert -list -v -alias androiddebugkey -storepass android -keystore android/app/debug.keystore`

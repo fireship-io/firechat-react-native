@@ -128,7 +128,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.firechat"
+        applicationId "io.fireship.firechat"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -145,7 +145,7 @@ android {
     signingConfigs {
         
         debug {
-            storeFile file('/Users/klutch/.android/debug.keystore')
+            storeFile file('debug.keystore')
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
