@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import {
   View,
   StyleSheet,
@@ -9,16 +11,15 @@ import {
 } from 'react-native';
 import Chat from '../components/Chat';
 import Input from '../components/Input';
-import auth from '@react-native-firebase/auth';
 import SendButton from '../components/SendButton';
 import SignOutButton from '../components/SignOutButton';
-import firestore from '@react-native-firebase/firestore';
+
 
 const ChatScreen = () => {
-  const [text, setText] = useState('');
-  const [chats, setChats] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const timestamp = firestore.FieldValue.serverTimestamp();
+  const [text, setText] = useState('');                      // Input text
+  const [chats, setChats] = useState([]);                    // Chat messages
+  const [loading, setLoading] = useState(true);              // Loading state
+  const timestamp = firestore.FieldValue.serverTimestamp();  // Firestore timestamp
 
   const sendMessage = async e => {
     const {uid, photoURL} = auth().currentUser;
@@ -61,14 +62,14 @@ const ChatScreen = () => {
   useEffect(() => {
     const unsubscribe = firestore()
       .collection('chats')
-      .orderBy('createdAt', 'asc')
-      .limitToLast(15)
+      .orderBy('createdAt', 'asc')    // Sort by timestamp
+      .limitToLast(15)                // Only retrieve the last 15 messages
       .onSnapshot(querySnapshot => {
         const chatsArr = [];
         querySnapshot.forEach(doc => {
           const id = doc.id;
           const data = doc.data();
-
+          // Add docId and chat data to chats array 
           chatsArr.push({id, ...data});
         });
         setChats(chatsArr);
@@ -82,17 +83,19 @@ const ChatScreen = () => {
   }, []);
 
   if (loading) {
-    return <ActivityIndicator />;
+    return <ActivityIndicator />;  // Show loader while loading chats
   } else {
     const username = auth().currentUser.displayName;
 
     return (
       <View style={styles.container}>
+        // Top app bar
         <View style={styles.textContainer}>
           <Text style={styles.text}>{username}</Text>
           <SignOutButton handleClick={handleSignOut} />
         </View>
 
+        // Chats container
         <View style={styles.chatStyle}>
           {chats && (
             <FlatList
@@ -102,6 +105,7 @@ const ChatScreen = () => {
           )}
         </View>
 
+        // Bottom input bar
         <View style={styles.inputContainer}>
           <Input text={text} setText={setText} />
           <SendButton handleChat={sendMessage} />
