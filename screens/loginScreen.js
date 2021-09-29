@@ -1,14 +1,17 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {
   GoogleSigninButton,
   GoogleSignin,
 } from '@react-native-google-signin/google-signin';
+import {View, StyleSheet} from 'react-native';
 
 const LoginScreen = () => {
+  
   // Initialize google sign in
   GoogleSignin.configure({
+    
+    // Pulled from Google Authentication settings in Firebase console
     webClientId: '1081896986894-mrouhl6pb5kq29u5ui4hetk9n3fntd1v.apps.googleusercontent.com',
   });
 
