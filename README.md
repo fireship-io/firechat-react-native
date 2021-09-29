@@ -2,7 +2,31 @@
 
 ### Project structure
 
-#### Connect to the dev server using adb reverse
+```
+firechat-react-native
+├── README.md
+├── node_modules
+├── package.json
+├── metro.config.js
+├── package.json
+├── index.js
+├── App.js
+├── app.json
+├── screens
+│   ├── chatScreen.js
+│   └── loginScreen.js
+└── components
+    ├── Chat
+    │   └── index.js
+    ├── Input
+    │   └── index.jsx
+    ├── SendButton
+    │   └── index.js
+    └── SignOutButton
+        └── index.js
+```
+
+### Connect to the dev server using adb reverse
 
 1. Enable debugging over USB
 
@@ -40,30 +64,6 @@ $ npx react-native run-android # Debug build
 $ npx react-native run-android --variant=release # Release build
 ```
 
-```
-firechat-react-native
-├── README.md
-├── node_modules
-├── package.json
-├── metro.config.js
-├── package.json
-├── index.js
-├── App.js
-├── app.json
-├── screens
-│   ├── chatScreen.js
-│   └── loginScreen.js
-└── components
-    ├── Chat
-    │   └── index.js
-    ├── Input
-    │   └── index.jsx
-    ├── SendButton
-    │   └── index.js
-    └── SignOutButton
-        └── index.js
-```
-
-# Generating SHA
+### Generating SHA
 
 To retrieve correct SHA1 run `keytool -exportcert -list -v -alias androiddebugkey -storepass android -keystore android/app/debug.keystore`
