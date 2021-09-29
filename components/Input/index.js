@@ -4,10 +4,10 @@ import {StyleSheet, TextInput, View} from 'react-native';
 const Input = ({text, setText}) => {
   return (
     <TextInput
-      placeholder="Enter message"
       value={text}
       onChangeText={setText}
       style={styles.textInput}
+      placeholder="Enter message"
       placeholderTextColor="#595959"
     />
   );
