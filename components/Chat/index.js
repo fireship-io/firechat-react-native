@@ -62,6 +62,7 @@ const Received = ({chat}) => {
 
   return (
     <View style={styles.rowStyle}>
+      // TouchableOpacity is the equivalent to Flutters GestureDetector
       <TouchableOpacity key={id} style={styles.touchable}>
         <Image style={styles.image} source={{uri: imageUrl}} />
         <Text style={styles.text}>{text}</Text>
