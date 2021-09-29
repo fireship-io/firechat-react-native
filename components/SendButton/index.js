@@ -4,11 +4,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const SendButton = ({handleChat}) => {
   return (
-    <>
-      <TouchableOpacity onPress={handleChat} style={styles.button}>
-        <Icon name="send" size={30} color="#030303" />
-      </TouchableOpacity>
-    </>
+    <TouchableOpacity onPress={handleChat} style={styles.button}>
+      <Icon name="send" size={30} color="#030303" />
+    </TouchableOpacity>
   );
 };
 
